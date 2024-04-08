@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cithacfag1tvr"]
+
+[ext_resource type="Texture2D" uid="uid://4sfe2qle2bc4" path="res://textures/broc-removebg-preview - Copy.png" id="1_3kblh"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_13j26"]
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.04, 0.04)
+motion_mode = 1
+script = ExtResource("1_13j26")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_3kblh")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbcsos6b1jqoe"]
+
+[ext_resource type="Script" path="res://enemy/character_body_2d.gd" id="1_eljh1"]
+[ext_resource type="Texture2D" uid="uid://bl5p7lj6g65l0" path="res://textures/PngItem_6400585.png" id="1_kooaa"]
+
+[node name="enemy" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_eljh1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 3)
+scale = Vector2(0.05, 0.046)
+texture = ExtResource("1_kooaa")
