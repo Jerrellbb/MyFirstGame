@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl4q0pwg2lm6d"]
+
+[ext_resource type="Script" path="res://Utility/hitbox.gd" id="1_ahm1x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ax6v6"]
+
+[node name="Hitbox" type="Area2D" groups=["attack"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ahm1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ax6v6")
+
+[node name="disableHitBoxTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="disableHitBoxTimer" to="." method="_on_disable_hit_box_timer_timeout"]
