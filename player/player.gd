@@ -1,7 +1,7 @@
 extends CharacterBody2D
+@export var hp = 10
 
-
-var movement_speed = 40.0
+@export var movement_speed = 40.0
 
 func _physics_process(_delta):
 	movement()
@@ -14,4 +14,6 @@ func movement():
 	move_and_slide()
 	
 
-
+func _on_hurtbox_hurt(dmg):
+	hp -= dmg
+	print(hp)
