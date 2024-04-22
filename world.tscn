@@ -25,8 +25,8 @@ collision_layer = 2
 [node name="CollisionShape2D" parent="player" index="1"]
 visible = true
 
-[node name="Hurtbox" parent="player" index="3"]
-hurtBoxType = 0
+[node name="DisableTimer" parent="player/Hurtbox" index="1"]
+one_shot = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -37,6 +37,16 @@ shape = SubResource("CircleShape2D_i7q6k")
 [node name="enemy" parent="." instance=ExtResource("3_4oxfo")]
 position = Vector2(313, 163)
 collision_layer = 4
+
+[node name="Hurtbox" parent="enemy" index="1"]
+visible = false
+collision_mask = 4
+
+[node name="DisableTimer" parent="enemy/Hurtbox" index="1"]
+one_shot = true
+
+[node name="disableHitBoxTimer" parent="enemy/Hitbox" index="1"]
+one_shot = true
 
 [editable path="player"]
 [editable path="player/Hurtbox"]

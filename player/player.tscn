@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cithacfag1tvr"]
+[gd_scene load_steps=6 format=3 uid="uid://cithacfag1tvr"]
 
 [ext_resource type="Texture2D" uid="uid://4sfe2qle2bc4" path="res://textures/broc-removebg-preview - Copy.png" id="1_3kblh"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_13j26"]
-[ext_resource type="PackedScene" uid="uid://cl4q0pwg2lm6d" path="res://Utility/hitbox.tscn" id="3_qoema"]
 [ext_resource type="PackedScene" uid="uid://do408jmicve72" path="res://Utility/hurtbox.tscn" id="4_0kjec"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_srs4w"]
@@ -24,9 +23,6 @@ visible = false
 position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_srs4w")
 
-[node name="Hitbox" parent="." instance=ExtResource("3_qoema")]
-visible = false
-
 [node name="Hurtbox" parent="." instance=ExtResource("4_0kjec")]
 collision_layer = 2
 collision_mask = 2
@@ -35,6 +31,8 @@ hurtBoxType = 2
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_jyn2y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 
