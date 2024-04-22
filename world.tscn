@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ci7welu5fmki2" path="res://textures/gridBg.png" id="1_ja068"]
 [ext_resource type="PackedScene" uid="uid://cithacfag1tvr" path="res://player/player.tscn" id="2_dtv2i"]
-[ext_resource type="PackedScene" uid="uid://oad1oton1h21" path="res://enemy/enemy.tscn" id="3_4oxfo"]
+[ext_resource type="PackedScene" uid="uid://cuc7h464ix772" path="res://Utility/enemy_spawner.tscn" id="3_qsi0d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7q6k"]
 radius = 27.0185
@@ -22,21 +22,22 @@ position = Vector2(371, 198)
 scale = Vector2(1, 1)
 collision_layer = 2
 
+<<<<<<< HEAD
 [node name="CollisionShape2D" parent="player" index="1"]
 visible = true
 
 [node name="DisableTimer" parent="player/Hurtbox" index="1"]
 one_shot = true
 
+=======
+>>>>>>> upstream/main
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(560, 301)
 shape = SubResource("CircleShape2D_i7q6k")
 
-[node name="enemy" parent="." instance=ExtResource("3_4oxfo")]
-position = Vector2(313, 163)
-collision_layer = 4
+[node name="EnemySpawner" parent="." instance=ExtResource("3_qsi0d")]
 
 [node name="Hurtbox" parent="enemy" index="1"]
 visible = false
@@ -50,6 +51,3 @@ one_shot = true
 
 [editable path="player"]
 [editable path="player/Hurtbox"]
-[editable path="enemy"]
-[editable path="enemy/Hurtbox"]
-[editable path="enemy/Hitbox"]

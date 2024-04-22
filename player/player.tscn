@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=3 uid="uid://cithacfag1tvr"]
+=======
+[gd_scene load_steps=8 format=3 uid="uid://cithacfag1tvr"]
+>>>>>>> upstream/main
 
 [ext_resource type="Texture2D" uid="uid://4sfe2qle2bc4" path="res://textures/broc-removebg-preview - Copy.png" id="1_3kblh"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_13j26"]
@@ -8,6 +12,9 @@
 radius = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyn2y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_baho7"]
+radius = 9200.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.04, 0.04)
@@ -26,14 +33,39 @@ shape = SubResource("CircleShape2D_srs4w")
 [node name="Hurtbox" parent="." instance=ExtResource("4_0kjec")]
 collision_layer = 2
 collision_mask = 2
-hurtBoxType = 2
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = false
 scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_jyn2y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+<<<<<<< HEAD
+=======
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="IceSpearTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="IceSpearAttackTimer" type="Timer" parent="Attack/IceSpearTimer"]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_baho7")
+
+>>>>>>> upstream/main
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
+[connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 
 [editable path="Hurtbox"]
