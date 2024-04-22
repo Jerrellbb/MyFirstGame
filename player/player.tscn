@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=6 format=3 uid="uid://cithacfag1tvr"]
-=======
 [gd_scene load_steps=8 format=3 uid="uid://cithacfag1tvr"]
->>>>>>> upstream/main
 
 [ext_resource type="Texture2D" uid="uid://4sfe2qle2bc4" path="res://textures/broc-removebg-preview - Copy.png" id="1_3kblh"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_13j26"]
