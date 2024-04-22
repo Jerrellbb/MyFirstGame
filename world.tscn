@@ -22,9 +22,6 @@ position = Vector2(371, 198)
 scale = Vector2(1, 1)
 collision_layer = 2
 
-[node name="CollisionShape2D" parent="player" index="1"]
-visible = true
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

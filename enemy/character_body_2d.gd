@@ -14,3 +14,4 @@ func _on_hurtbox_hurt(dmg):
 	hp -= dmg
 	if hp < 0:
 		queue_free()
+	print(hp)
