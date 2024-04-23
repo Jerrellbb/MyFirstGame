@@ -1,8 +1,7 @@
 extends CharacterBody2D
-@export var hp = 10
 
 @export var movement_speed = 20.0
-
+@export var hp = 10
 @onready var player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(_delta):
@@ -10,8 +9,9 @@ func _physics_process(_delta):
 	velocity = direction*movement_speed
 	move_and_slide()
 
+
 func _on_hurtbox_hurt(dmg):
 	hp -= dmg
+	print("enemy", hp)
 	if hp <= 0:
 		queue_free()
-	print(hp)

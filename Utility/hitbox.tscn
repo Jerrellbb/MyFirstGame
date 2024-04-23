@@ -14,5 +14,6 @@ shape = SubResource("CircleShape2D_ax6v6")
 
 [node name="disableHitBoxTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [connection signal="timeout" from="disableHitBoxTimer" to="." method="_on_disable_hit_box_timer_timeout"]

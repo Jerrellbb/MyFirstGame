@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var hp = 10
+@export var hp = 80
 
 @export var movement_speed = 40.0
 #attacks
@@ -42,8 +42,7 @@ func attack():
 
 func _on_hurtbox_hurt(dmg):
 	hp -= dmg
-	
-
+	print(hp)
 
 func _on_ice_spear_timer_timeout():
 	icespear_ammo += icespear_baseammo
