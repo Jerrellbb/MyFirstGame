@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cithacfag1tvr"]
+[gd_scene load_steps=7 format=3 uid="uid://cithacfag1tvr"]
 
 [ext_resource type="Texture2D" uid="uid://4sfe2qle2bc4" path="res://textures/broc-removebg-preview - Copy.png" id="1_3kblh"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_13j26"]
@@ -27,18 +27,16 @@ position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_srs4w")
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_0kjec")]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-visible = false
 scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_jyn2y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-<<<<<<< HEAD
-=======
 [node name="Attack" type="Node2D" parent="."]
 
 [node name="IceSpearTimer" type="Timer" parent="Attack"]
@@ -50,6 +48,7 @@ unique_name_in_owner = true
 wait_time = 0.075
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 4
 monitorable = false
@@ -57,7 +56,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_baho7")
 
->>>>>>> upstream/main
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
 [connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]

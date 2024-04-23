@@ -22,15 +22,6 @@ position = Vector2(371, 198)
 scale = Vector2(1, 1)
 collision_layer = 2
 
-<<<<<<< HEAD
-[node name="CollisionShape2D" parent="player" index="1"]
-visible = true
-
-[node name="DisableTimer" parent="player/Hurtbox" index="1"]
-one_shot = true
-
-=======
->>>>>>> upstream/main
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -38,16 +29,6 @@ position = Vector2(560, 301)
 shape = SubResource("CircleShape2D_i7q6k")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_qsi0d")]
-
-[node name="Hurtbox" parent="enemy" index="1"]
-visible = false
-collision_mask = 4
-
-[node name="DisableTimer" parent="enemy/Hurtbox" index="1"]
-one_shot = true
-
-[node name="disableHitBoxTimer" parent="enemy/Hitbox" index="1"]
-one_shot = true
 
 [editable path="player"]
 [editable path="player/Hurtbox"]

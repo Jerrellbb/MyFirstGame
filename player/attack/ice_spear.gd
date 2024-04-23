@@ -3,7 +3,7 @@ extends Area2D
 var level = 1
 var hp = 1
 var speed = 100
-var damage = 5
+var dmg = 5
 var knock_amount = 100
 var attack_size = 1.0
 
@@ -14,12 +14,12 @@ var angle = Vector2.ZERO
 
 func _ready():
 	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg_to_rad(135)
+	rotation = angle.angle() + deg_to_rad(0)
 	match level:
 		1:
 			hp = 1
 			speed = 100
-			damage = 5
+			dmg = 5
 			knock_amount = 100
 			attack_size = 1.0
 			
