@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dalb7hwdb0586"]
+
+[ext_resource type="Script" path="res://player/attack/Tornado.gd" id="1_jvkq8"]
+[ext_resource type="Texture2D" uid="uid://bki15fnaxaqw6" path="res://textures/Items/Image20240424115620.png" id="2_i7rh2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlt6j"]
+size = Vector2(19, 28)
+
+[node name="Tornado" type="Area2D" groups=["attack"]]
+top_level = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_jvkq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i7rh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_rlt6j")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
