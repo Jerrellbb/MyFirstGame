@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl0p7hiy6kc6h"]
+[gd_scene load_steps=6 format=3 uid="uid://cl0p7hiy6kc6h"]
 
 [ext_resource type="Texture2D" uid="uid://ci7welu5fmki2" path="res://textures/gridBg.png" id="1_ja068"]
 [ext_resource type="PackedScene" uid="uid://cithacfag1tvr" path="res://player/player.tscn" id="2_dtv2i"]
 [ext_resource type="PackedScene" uid="uid://cuc7h464ix772" path="res://Utility/enemy_spawner.tscn" id="3_qsi0d"]
+[ext_resource type="PackedScene" uid="uid://dlbpe7eloa6mh" path="res://Objects/experience_gem.tscn" id="4_bfi5c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7q6k"]
 radius = 27.0185
@@ -29,6 +30,12 @@ position = Vector2(560, 301)
 shape = SubResource("CircleShape2D_i7q6k")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_qsi0d")]
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="ExperienceGem" parent="Loot" instance=ExtResource("4_bfi5c")]
+position = Vector2(460, 160)
+experience = 10
 
 [editable path="player"]
 [editable path="player/Hurtbox"]
