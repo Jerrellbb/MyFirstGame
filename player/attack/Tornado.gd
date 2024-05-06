@@ -51,7 +51,7 @@ func _ready():
 	speed = speed/5.0
 	initial_tween.tween_property(self,"speed",final_speed,6).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	initial_tween.play()
-			
+	
 	var tween = create_tween()
 	var set_angle = randi_range(0,1)
 	
@@ -79,9 +79,6 @@ func _ready():
 		
 		
 func _physics_process(delta):
-	
-	
-	
 	position += angle * speed * delta
 	
 
