@@ -12,18 +12,36 @@ var angle = Vector2.ZERO
 
 @onready var player = get_tree(). get_first_node_in_group("player")
 signal remove_from_array(object)
+
 func _ready():
 	angle = global_position.direction_to(target)
 	rotation = angle.angle() + deg_to_rad(0)
 	match level:
 		1:
-			hp = 2
+			hp = 1
 			speed = 100
 			dmg = 5
 			knockback_amount = 100
-			attack_size = 1.0
-			
-			
+			attack_size = 1.0 * (1 + player.spell_size)
+		2:
+			hp = 1
+			speed = 100
+			dmg = 5
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
+		3:
+			hp = 1
+			speed = 100
+			dmg = 8
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
+		4:
+			hp = 1
+			speed = 100
+			dmg = 8
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
+
 func _physics_process(delta):
 	position += angle*speed*delta
 	
