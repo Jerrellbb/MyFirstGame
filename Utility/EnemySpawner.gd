@@ -8,7 +8,10 @@ extends Node2D
 
 var time = 0
 
+signal changetime(time)
 
+func _ready():
+	connect("changetime", Callable(player, "change_time"))
 
 func _on_timer_timeout():
 	
@@ -30,12 +33,12 @@ func _on_timer_timeout():
 					var counter = 0
 					# keep spawning enemies while counter is less than enemy_num
 					while counter < i.enemy_num:
-						
 						var enemy_spawn = new_enemy.instantiate()
 						enemy_spawn.global_position = get_random_position()
 						add_child(enemy_spawn)
 						counter += 1
-						
+	emit_signal("changetime", time)
+
 func get_random_position():
 	var vpr = get_viewport_rect().size * randf_range(1.1,1.4)
 	var top_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y - vpr.y/2)

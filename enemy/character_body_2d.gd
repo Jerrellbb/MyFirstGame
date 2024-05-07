@@ -5,17 +5,27 @@ extends CharacterBody2D
 @export var movement_speed = 20.0
 @export var knockback_recovery = 3.5
 @export var experience = 1
+@export var dmg = 1
 var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
+@onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var snd_hit = $snd_hit
+@onready var hitbox = $Hitbox
 
 signal remove_from_array(object)
 
 var death_anim = preload("res://enemy/explosion.tscn")
 var exp_gem = preload("res://Objects/experience_gem.tscn")
+
+
+func _ready():
+	if anim:
+		anim.play("walk")
+	hitbox.dmg = dmg
+
 
 func _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -23,6 +33,11 @@ func _physics_process(_delta):
 	velocity = direction*movement_speed
 	velocity += knockback
 	move_and_slide()
+	
+	if direction.x > 0.1:
+		sprite.flip_h = true
+	elif direction.x < -0.1:
+		sprite.flip_h = false
 
 
 
