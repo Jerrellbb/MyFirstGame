@@ -7,13 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://crxu4j7k30dbh" path="res://audio/soundEffects/enemy_hit.ogg" id="5_tcl24"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xoaig"]
-radius = 8.0
+radius = 33.36
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6oad"]
-size = Vector2(28, 29.3333)
+size = Vector2(118.667, 118.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjx0e"]
-size = Vector2(18.6667, 21.3333)
+size = Vector2(86.6667, 98.6667)
 
 [sub_resource type="Animation" id="Animation_k4o8s"]
 length = 0.001
@@ -24,10 +24,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_8lt53"]
@@ -41,10 +41,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l3c0u"]
@@ -63,15 +63,15 @@ hp = 99999
 movement_speed = 150.0
 knockback_recovery = 99999.0
 experience = 100
-dmg = 20
+enemy_dmg = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 3)
+scale = Vector2(5, 5)
 texture = ExtResource("2_76kxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(1.33333, 13.3333)
+position = Vector2(2.66667, 26.6667)
 shape = SubResource("CircleShape2D_xoaig")
 disabled = true
 
@@ -81,7 +81,7 @@ collision_mask = 4
 hurtBoxType = 1
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(0.666667, 4)
+position = Vector2(1.33333, 9.33333)
 shape = SubResource("RectangleShape2D_s6oad")
 
 [node name="Hitbox" parent="." instance=ExtResource("4_5gcha")]
@@ -89,7 +89,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0, 4)
+position = Vector2(2, 9.33333)
 shape = SubResource("RectangleShape2D_vjx0e")
 
 [node name="snd_hit" type="AudioStreamPlayer2D" parent="."]

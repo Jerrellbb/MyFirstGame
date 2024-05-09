@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://oad1oton1h21"]
+[gd_scene load_steps=12 format=3 uid="uid://oad1oton1h21"]
 
 [ext_resource type="Script" path="res://enemy/character_body_2d.gd" id="1_12s20"]
-[ext_resource type="Texture2D" uid="uid://bl5p7lj6g65l0" path="res://textures/PngItem_6400585.png" id="2_vy8fk"]
+[ext_resource type="Texture2D" uid="uid://dqnyhn04blg86" path="res://textures/enemy/kolbold_weak.png" id="2_se114"]
 [ext_resource type="PackedScene" uid="uid://do408jmicve72" path="res://Utility/hurtbox.tscn" id="3_te5a0"]
 [ext_resource type="PackedScene" uid="uid://cl4q0pwg2lm6d" path="res://Utility/hitbox.tscn" id="4_2fhrb"]
 [ext_resource type="AudioStream" uid="uid://crxu4j7k30dbh" path="res://audio/soundEffects/enemy_hit.ogg" id="5_55jyb"]
@@ -15,6 +15,44 @@ size = Vector2(22, 17)
 [sub_resource type="CircleShape2D" id="CircleShape2D_xoaig"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_17jq3"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ukjep"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8oixs"]
+_data = {
+"RESET": SubResource("Animation_ukjep"),
+"walk": SubResource("Animation_17jq3")
+}
+
 [node name="enemy_kobold_weak" type="CharacterBody2D"]
 scale = Vector2(0.75, 0.75)
 collision_layer = 4
@@ -24,8 +62,8 @@ script = ExtResource("1_12s20")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 3)
-scale = Vector2(0.05, 0.046)
-texture = ExtResource("2_vy8fk")
+texture = ExtResource("2_se114")
+hframes = 2
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_te5a0")]
 collision_layer = 4
@@ -53,6 +91,11 @@ shape = SubResource("CircleShape2D_xoaig")
 [node name="snd_hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_55jyb")
 volume_db = -20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8oixs")
+}
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 

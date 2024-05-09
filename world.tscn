@@ -1,15 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://cl0p7hiy6kc6h"]
+[gd_scene load_steps=22 format=3 uid="uid://cl0p7hiy6kc6h"]
 
 [ext_resource type="Texture2D" uid="uid://ci7welu5fmki2" path="res://textures/gridBg.png" id="1_ja068"]
 [ext_resource type="PackedScene" uid="uid://cithacfag1tvr" path="res://player/player.tscn" id="2_dtv2i"]
 [ext_resource type="PackedScene" uid="uid://cuc7h464ix772" path="res://Utility/enemy_spawner.tscn" id="3_qsi0d"]
-[ext_resource type="PackedScene" uid="uid://dlbpe7eloa6mh" path="res://Objects/experience_gem.tscn" id="4_bfi5c"]
 [ext_resource type="PackedScene" uid="uid://oad1oton1h21" path="res://enemy/enemy_kobold_weak.tscn" id="4_ep2cb"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_sefuc"]
 [ext_resource type="PackedScene" uid="uid://c8ainvfmqgej2" path="res://enemy/enemy_kobold_strong.tscn" id="6_b7dxs"]
 [ext_resource type="PackedScene" uid="uid://djrv2n8or6kpr" path="res://enemy/enemy_cyclops.tscn" id="7_k31yp"]
 [ext_resource type="PackedScene" uid="uid://ditcub32mitqt" path="res://enemy/enemy_juggernaut.tscn" id="8_uc8c3"]
 [ext_resource type="PackedScene" uid="uid://d3xi7e6g2bjh2" path="res://enemy/enemy_super.tscn" id="9_cep0l"]
+[ext_resource type="AudioStream" uid="uid://bsdcic8bn53w5" path="res://audio/Music/battleThemeA.mp3" id="10_32cpp"]
+[ext_resource type="Script" path="res://audio/Music/snd_Music.gd" id="11_mmwpt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7q6k"]
 radius = 27.0185
@@ -112,9 +113,14 @@ spawns = Array[ExtResource("5_sefuc")]([SubResource("Resource_j56t6"), SubResour
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
-[node name="ExperienceGem" parent="Loot" instance=ExtResource("4_bfi5c")]
-position = Vector2(460, 160)
-experience = 500
+[node name="snd_Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_32cpp")
+volume_db = -15.0
+autoplay = true
+script = ExtResource("11_mmwpt")
+
+[connection signal="playerdeath" from="player" to="snd_Music" method="_on_player_playerdeath"]
 
 [editable path="player"]
 [editable path="player/Hurtbox"]

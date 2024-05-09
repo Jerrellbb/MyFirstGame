@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var movement_speed = 20.0
 @export var knockback_recovery = 3.5
 @export var experience = 1
-@export var dmg = 1
+@export var enemy_dmg = 1
 var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -24,7 +24,7 @@ var exp_gem = preload("res://Objects/experience_gem.tscn")
 func _ready():
 	if anim:
 		anim.play("walk")
-	hitbox.dmg = dmg
+	hitbox.dmg = enemy_dmg
 
 
 func _physics_process(_delta):
@@ -44,7 +44,7 @@ func _physics_process(_delta):
 func death():
 	emit_signal("remove_from_array", self)
 	var enemy_death = death_anim.instantiate()
-	enemy_death.scale =  sprite.scale * 20
+	enemy_death.scale =  sprite.scale * 1
 	enemy_death.global_position = global_position
 	get_parent().call_deferred("add_child", enemy_death)
 	var new_gem = exp_gem.instantiate()
